@@ -1,0 +1,472 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Stars Background */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.stars::before,
+.stars::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.container {
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    margin-bottom: 40px;
+    animation: slideDown 1s ease-out;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+    animation: bounce 2s infinite;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Cake */
+.cake-container {
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    animation: slideIn 1s ease-out 0.3s backwards;
+}
+
+.cake {
+    position: relative;
+    width: 150px;
+    height: 180px;
+    animation: cakeBounce 1.5s ease-in-out infinite;
+}
+
+.cake-layer {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 0;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cake-layer-1 {
+    top: 130px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+}
+
+.cake-layer-2 {
+    top: 80px;
+    background: linear-gradient(135deg, #ffa502, #ffb84d);
+    width: 130px;
+    left: 10px;
+}
+
+.cake-layer-3 {
+    top: 30px;
+    background: linear-gradient(135deg, #ffd93d, #ffe66d);
+    width: 110px;
+    left: 20px;
+}
+
+@keyframes cakeBounce {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-30px) scale(1.05);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Candles */
+.candles {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.candle {
+    width: 8px;
+    height: 40px;
+    background: #fff;
+    border-radius: 4px;
+    position: relative;
+}
+
+.flame {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background: linear-gradient(to top, #ff6b6b, #ffd93d);
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50% 50% 50% 0;
+    animation: flameFlicker 0.6s ease-in-out infinite;
+}
+
+@keyframes flameFlicker {
+    0%, 100% {
+        transform: translateX(-50%) scaleY(1) rotateZ(0deg);
+    }
+    50% {
+        transform: translateX(-50%) scaleY(1.1) rotateZ(2deg);
+    }
+}
+
+/* Wishes Section */
+.wishes-section {
+    margin: 40px 0;
+    animation: slideUp 1s ease-out 0.5s backwards;
+}
+
+.wishes-title {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.wishes-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.wish-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: wishAppear 0.6s ease-out;
+    border-left: 5px solid #667eea;
+}
+
+.wish-text {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+@keyframes wishAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add Wish Section */
+.add-wish-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    margin: 30px 0;
+    backdrop-filter: blur(10px);
+    animation: slideUp 1s ease-out 0.7s backwards;
+}
+
+.add-wish-section h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.wish-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.wish-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+.add-wish-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-wish-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.add-wish-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Balloons */
+.balloon {
+    position: fixed;
+    width: 30px;
+    height: 40px;
+    border-radius: 50% 50% 50% 0;
+    pointer-events: none;
+    animation: float 6s infinite ease-in;
+}
+
+.balloon-1 {
+    background: #ff6b6b;
+    left: 10%;
+    bottom: -50px;
+    animation-delay: 0s;
+}
+
+.balloon-2 {
+    background: #4ecdc4;
+    left: 20%;
+    bottom: -50px;
+    animation-delay: 0.5s;
+}
+
+.balloon-3 {
+    background: #ffe66d;
+    left: 50%;
+    bottom: -50px;
+    animation-delay: 1s;
+}
+
+.balloon-4 {
+    background: #95e1d3;
+    left: 70%;
+    bottom: -50px;
+    animation-delay: 1.5s;
+}
+
+.balloon-5 {
+    background: #c7ceea;
+    right: 10%;
+    bottom: -50px;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0% {
+        bottom: -50px;
+        opacity: 1;
+    }
+    100% {
+        bottom: 100vh;
+        opacity: 0;
+    }
+}
+
+/* Confetti */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #667eea;
+    animation: confettiFall 3s ease-in forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .cake {
+        width: 120px;
+        height: 150px;
+    }
+
+    .cake-layer {
+        width: 120px;
+        height: 40px;
+    }
+
+    .cake-layer-2 {
+        width: 100px;
+        left: 10px;
+    }
+
+    .cake-layer-3 {
+        width: 80px;
+        left: 20px;
+    }
+
+    .wishes-title {
+        font-size: 1.4rem;
+    }
+
+    .wish-card {
+        padding: 15px;
+    }
+
+    .wish-text {
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .wishes-container {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.4rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .header {
+        margin-bottom: 20px;
+    }
+
+    .cake-container {
+        margin: 20px 0;
+    }
+
+    .wishes-section {
+        margin: 20px 0;
+    }
+
+    .add-wish-section {
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    .wishes-container {
+        max-height: 250px;
+    }
+}
